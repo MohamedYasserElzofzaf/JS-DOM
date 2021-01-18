@@ -23,30 +23,36 @@
  * Start Helper Functions
  *
  */
-
 /**
  * End Helper Functions
  * Begin Main Functions
  *
  */
-
 // build the nav
-document.querySelectorAll(".section");
-forEach();
-document.createElement();
-document.createDocumentFragment();
 // Add class 'active' to section when near top of viewport
-
 // Scroll to anchor ID using scrollTO event
-
 /**
  * End Main Functions
  * Begin Events
  *
  */
-
 // Build menu
-
 // Scroll to section on link click
-
 // Set sections as active
+
+const sections = document.querySelectorAll("section");
+const newfragment = document.createDocumentFragment();
+let unorderList = document.getElementById("navbar__list");
+sections.forEach((section) => {
+    // let react = elements.getBoundingClientRect();
+    const newItem = document.createElement("a");
+    const itemLink = section.getAttribute("data-nav");
+    newItem.innerHTML = itemLink;
+    let listNewItem = document.createElement("li");
+    listNewItem.appendChild(newItem);
+    newfragment.appendChild(listNewItem);
+    newItem.addEventListener("click", () => {
+        section.scrollIntoView({ behavior: "smooth" });
+    });
+});
+unorderList.appendChild(newfragment);
