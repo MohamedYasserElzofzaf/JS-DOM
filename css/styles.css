@@ -94,10 +94,11 @@ ul li {
     font-weight: bold;
     text-decoration: none;
     color: #000;
+    cursor: pointer;
 }
 
 .navbar__menu .menu__link:hover {
-    background: #333;
+    background-color: rgb(105, 12, 12);
     color: #fff;
     transition: ease 0.3s all;
 }
@@ -225,13 +226,13 @@ section:nth-of-type(3n + 1) .landing__container::after {
 
 /* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
 
-section.your-active-class {
-    background: rgb(124, 73, 117);
+.your-active-class {
+    background-color: rgb(124, 73, 117);
     background: linear-gradient( 0deg, rgba(129, 139, 167, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-section.your-active-link {
-    background-color: coral;
+.activLink {
+    background-color: chocolate;
 }
 
 section.your-active-class .landing__container::before {

@@ -18,8 +18,8 @@
  *
  */
 const sections = document.querySelectorAll("section");
-const newfragment = document.createDocumentFragment();
 let unorderList = document.getElementById("navbar__list");
+const newfragment = document.createDocumentFragment();
 
 /**
  * End Global Variables
@@ -37,10 +37,12 @@ sections.forEach((section) => {
     const newItem = document.createElement("a");
     const itemLink = section.getAttribute("data-nav");
     newItem.innerHTML = itemLink;
-    let listNewItem = document.createElement("li");
-    listNewItem.appendChild(newItem);
-    newfragment.appendChild(listNewItem);
+    let listItem = document.createElement("li");
+    listItem.appendChild(newItem);
+    newfragment.appendChild(listItem);
     newItem.addEventListener("click", () => {
+        listItem.classList.remove("activLink");
+        listItem.classList.add("activLink");
         event.preventDefault();
         section.scrollIntoView({ behavior: "smooth" });
     });
@@ -55,20 +57,21 @@ unorderList.appendChild(newfragment);
  *
  */
 // to know when the view change
+let active_sec = document.getAttribute("data-nav");
+let active = active_sec.getElementsByClassName("landing__container");
 window.addEventListener("scroll", () => {
-    // let active_sec = document.querySelectorAll("section");
-    sections.forEach((active_sec) => {
-        const react = active_sec.getBoundingClientRect();
+    active.forEach(() => {
+        const react = active.getBoundingClientRect();
         if (react.top >= 0 && react.top <= 200) {
-            // remove the old one
-            sections.forEach((section) => {
-                active_sec.classList.remove("your-active-class");
-            });
             // add the new
-            active_sec.classList.add("your-active-class");
+            active.classList.add("your-active-class");
         }
-        let data = section.getAttribute("data-nav");
-        data.classList.add("your-active-class");
+        // remove the old one
+        active_sec.forEach(() => {
+            active.classList.remove("activLink");
+        });
+
+        // active_sec.classList.add("your-active-class");
     });
 });
 // Build menu
