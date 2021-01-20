@@ -48,10 +48,11 @@ sections.forEach((section) => {
         const react = document.getBoundingClientRect();
         if (react.top >= 0 && react.top <= 200) {
             // remove the old one
-            section.classList.remove("");
+            active_sec.classList.remove("your-Active-class");
             // add the new
-            section.classList.add("your-Active-class");
+            // active_sec.classList.add("your-Active-class");
         }
+        active_sec.classList.add("your-Active-class");
     });
 });
 unorderList.appendChild(newfragment);
