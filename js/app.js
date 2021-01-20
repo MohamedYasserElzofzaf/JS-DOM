@@ -57,21 +57,25 @@ unorderList.appendChild(newfragment);
  *
  */
 // to know when the view change
-let active_sec = document.getAttribute("data-nav");
-let active = active_sec.getElementsByClassName("landing__container");
 window.addEventListener("scroll", () => {
-    active.forEach(() => {
+    sections.forEach((active) => {
         const react = active.getBoundingClientRect();
         if (react.top >= 0 && react.top <= 200) {
             // add the new
+            sections.forEach((section) => {
+                section.classList.remove("your-active-class");
+            });
             active.classList.add("your-active-class");
+            active.style = "background-color: red;";
         }
-        // remove the old one
-        active_sec.forEach(() => {
-            active.classList.remove("activLink");
-        });
+        let activeLink = document.querySelectorAll("a");
+        activeLink.forEach((link) => {
+            if (link.textContent == active.getAttribute("data-nav")) {
+                link.classList.remove("your-active-class");
 
-        // active_sec.classList.add("your-active-class");
+                link.classList.add("your-active-class");
+            }
+        });
     });
 });
 // Build menu
