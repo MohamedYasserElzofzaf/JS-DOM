@@ -47,15 +47,19 @@ sections.forEach((section) => {
 });
 // to know when the view change
 window.addEventListener("scroll", () => {
+    // let active_sec = document.querySelectorAll("section");
     sections.forEach((active_sec) => {
         const react = active_sec.getBoundingClientRect();
         if (react.top >= 0 && react.top <= 200) {
             // remove the old one
-            active_sec.classList.remove("your-Active-class");
+            sections.forEach((section) => {
+                active_sec.classList.remove("your-active-class");
+            });
             // add the new
-            //itemLink = section.getAttribute("data-nav");
-            active_sec.classList.add("your-Active-class");
+            active_sec.classList.add("your-active-class");
         }
+        let data = section.getAttribute("data-nav");
+        data.classList.add("your-active-class");
     });
 });
 unorderList.appendChild(newfragment);
