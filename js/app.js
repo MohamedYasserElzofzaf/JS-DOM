@@ -17,9 +17,6 @@
  * Define Global Variables
  *
  */
-const sections = document.querySelectorAll("section");
-const newfragment = document.createDocumentFragment();
-let unorderList = document.getElementById("navbar__list");
 
 /**
  * End Global Variables
@@ -32,6 +29,10 @@ let unorderList = document.getElementById("navbar__list");
  *
  */
 // build the nav
+const sections = document.querySelectorAll("section");
+const newfragment = document.createDocumentFragment();
+let unorderList = document.getElementById("navbar__list");
+
 sections.forEach((section) => {
     const newItem = document.createElement("a");
     const itemLink = section.getAttribute("data-nav");
@@ -43,16 +44,18 @@ sections.forEach((section) => {
         event.preventDefault();
         section.scrollIntoView({ behavior: "smooth" });
     });
-
+});
+// to know when the view change
+window.addEventListener("scroll", () => {
     sections.forEach((active_sec) => {
-        const react = document.getBoundingClientRect();
+        const react = active_sec.getBoundingClientRect();
         if (react.top >= 0 && react.top <= 200) {
             // remove the old one
             active_sec.classList.remove("your-Active-class");
             // add the new
-            // active_sec.classList.add("your-Active-class");
+            //itemLink = section.getAttribute("data-nav");
+            active_sec.classList.add("your-Active-class");
         }
-        active_sec.classList.add("your-Active-class");
     });
 });
 unorderList.appendChild(newfragment);
