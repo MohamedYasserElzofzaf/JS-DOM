@@ -17,6 +17,9 @@
  * Define Global Variables
  *
  */
+const sections = document.querySelectorAll("section");
+const newfragment = document.createDocumentFragment();
+let unorderList = document.getElementById("navbar__list");
 
 /**
  * End Global Variables
@@ -29,9 +32,6 @@
  *
  */
 // build the nav
-const sections = document.querySelectorAll("section");
-const newfragment = document.createDocumentFragment();
-let unorderList = document.getElementById("navbar__list");
 
 sections.forEach((section) => {
     const newItem = document.createElement("a");
@@ -45,6 +45,15 @@ sections.forEach((section) => {
         section.scrollIntoView({ behavior: "smooth" });
     });
 });
+
+unorderList.appendChild(newfragment);
+// Add class 'active' to section when near top of viewport
+// Scroll to anchor ID using scrollTO event
+/**
+ * End Main Functions
+ * Begin Events
+ *
+ */
 // to know when the view change
 window.addEventListener("scroll", () => {
     // let active_sec = document.querySelectorAll("section");
@@ -62,14 +71,6 @@ window.addEventListener("scroll", () => {
         data.classList.add("your-active-class");
     });
 });
-unorderList.appendChild(newfragment);
-// Add class 'active' to section when near top of viewport
-// Scroll to anchor ID using scrollTO event
-/**
- * End Main Functions
- * Begin Events
- *
- */
 // Build menu
 // Scroll to section on link click
 // Set sections as active
