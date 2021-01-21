@@ -40,9 +40,12 @@ sections.forEach((section) => {
     let listItem = document.createElement("li");
     listItem.appendChild(newItem);
     newfragment.appendChild(listItem);
+
     newItem.addEventListener("click", () => {
-        listItem.classList.remove("activLink");
-        listItem.classList.add("activLink");
+        if (!listItem.classList.contains("active-link")) {
+            listItem.classList.remove("active-link");
+        }
+        listItem.classList.add("active-link");
         event.preventDefault();
         section.scrollIntoView({ behavior: "smooth" });
     });
@@ -56,6 +59,7 @@ unorderList.appendChild(newfragment);
  * Begin Events
  *
  */
+
 // to know when the view change
 window.addEventListener("scroll", () => {
     sections.forEach((active) => {
@@ -65,17 +69,19 @@ window.addEventListener("scroll", () => {
             sections.forEach((section) => {
                 section.classList.remove("your-active-class");
             });
-            active.classList.add("your-active-class");
-            active.style = "background-color: red;";
         }
-        let activeLink = document.querySelectorAll("a");
-        activeLink.forEach((link) => {
-            if (link.textContent == active.getAttribute("data-nav")) {
-                link.classList.remove("your-active-class");
+        active.classList.add("your-active-class");
 
-                link.classList.add("your-active-class");
-            }
-        });
+        // let activeLink = document.querySelectorAll("a");
+        // activeLink.forEach(function(link) {
+        //     // if (x.classList.contains("mystyle")) {
+        //     //   x.classList.remove("anotherClass");
+        //     // }
+        //     // if (link.classList.contains("active-link")) {
+        //     //     link.classList.remove("active-link");
+        //     // //}
+        //     // link.classList.add("active-link");
+        // });
     });
 });
 // Build menu
