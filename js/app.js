@@ -63,9 +63,8 @@ unorderList.appendChild(newfragment);
 // to know when the view change
 window.addEventListener("scroll", () => {
     sections.forEach((active) => {
-        const react = active.getBoundingClientRect();
-        if (react.top >= 0 && react.top <= 200) {
-            // add the new
+        let react = active.getBoundingClientRect();
+        if (react.top >= 0 && react.top < 150) {
             sections.forEach((section) => {
                 section.classList.remove("your-active-class");
             });
