@@ -42,7 +42,7 @@ sections.forEach((section) => {
     newfragment.appendChild(listItem);
 
     newItem.addEventListener("click", () => {
-        if (!listItem.classList.contains("active-link")) {
+        if (listItem.classList.contains("active-link")) {
             listItem.classList.remove("active-link");
         }
         listItem.classList.add("active-link");
